@@ -26,12 +26,4 @@ public class Doctor {
     public void setLevel(DocLevel level) {
         this.level = level;
     }
-
-    @Override
-    public String toString() {
-        return "Doctor{" +
-                "name='" + name + '\'' +
-                ", level=" + level +
-                '}';
-    }
 }

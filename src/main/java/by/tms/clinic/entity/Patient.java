@@ -27,12 +27,4 @@ public class Patient {
     public void setAge(int age) {
         this.age = age;
     }
-
-    @Override
-    public String toString() {
-        return "Patient{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                '}';
-    }
 }
