@@ -20,6 +20,7 @@ public class Main {
         PatientThread patientThread = new PatientThread(queue);
         patientThread.start();
 
+        // ждем 10 секунд что бы хоть немного наполнилась очередь и врачи не ушли домой раньше положеного
         try {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
