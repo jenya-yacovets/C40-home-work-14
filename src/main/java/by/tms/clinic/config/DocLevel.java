@@ -19,7 +19,7 @@ public enum DocLevel {
     },
     MANAGER {
         public String getValue() {
-            return "Зав. отделение";
+            return "Зав. отделением";
         }
         public int getSpeed() {
             return 5 * 1000;
