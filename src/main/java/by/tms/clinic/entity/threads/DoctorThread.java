@@ -1,6 +1,5 @@
 package by.tms.clinic.entity.threads;
 
-import by.tms.clinic.config.Config;
 import by.tms.clinic.entity.Doctor;
 import by.tms.clinic.entity.Patient;
 
@@ -21,20 +20,11 @@ public class DoctorThread extends Thread {
         System.out.println("=== Доктор " + doctor.getName() + " начал работу");
         while (true) {
 
-            if (queue.size() > Config.MAX_PATIENTS_QUEUE) {
-                System.out.println("### В очереди слишком много пациентов и доктор " + doctor.getName() + " ушел домой");
-                return;
-            }
-
             Patient currentPatient = queue.poll();
 
             if (currentPatient == null) {
-                try {
-                    Thread.sleep(Config.INTERVAL_WAIT_PATIENT);
-                    continue;
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                System.out.println("### В очереди нет пациентов и доктор " + doctor.getName() + " ушел домой");
+                return;
             }
 
             System.out.println("Доктор " + doctor.getName() + "(" + doctor.getLevel().getValue() + ") сейчас лечит пациента " + currentPatient.getName());

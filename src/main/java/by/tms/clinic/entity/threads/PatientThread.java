@@ -9,21 +9,21 @@ import java.util.Queue;
 public class PatientThread extends Thread {
 
     private Queue<Patient> queue;
-    private boolean isWork;
 
     public PatientThread(Queue<Patient> queue) {
         this.queue = queue;
-        isWork = true;
-    }
-
-    public void disable() {
-        isWork = false;
     }
 
     @Override
     public void run() {
-        while (isWork) {
+        while (true) {
+            if (queue.size() > Config.MAX_PATIENTS_QUEUE) {
+                System.out.println("### В очереди больше " + Config.MAX_PATIENTS_QUEUE + " пациентов и поэтому регестратура закрывается");
+                return;
+            }
+
             queue.offer(PatientFactory.getPatient());
+
             try {
                 Thread.sleep(Config.TIME_GENERATED_PATIENT);
             } catch (InterruptedException e) {

@@ -20,6 +20,12 @@ public class Main {
         PatientThread patientThread = new PatientThread(queue);
         patientThread.start();
 
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         // создаем потоки для каждого доктора
         DoctorThread doc1 = new DoctorThread(queue, new Doctor("Семен Семенович", DocLevel.INTERN));
         doc1.start();
@@ -37,7 +43,6 @@ public class Main {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        patientThread.disable();
         System.out.println("--- Все врачи закончили принимать пациентов и ушли домой ---");
     }
 }
