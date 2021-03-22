@@ -37,7 +37,7 @@ public class DoctorThread extends Thread {
                 }
             }
 
-            System.out.println("Доктор " + doctor.getName() + " сейчас лечит пациента " + currentPatient.getName());
+            System.out.println("Доктор " + doctor.getName() + "(" + doctor.getLevel().getValue() + ") сейчас лечит пациента " + currentPatient.getName());
 
             try {
                 Thread.sleep(doctor.getLevel().getSpeed());
